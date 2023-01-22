@@ -1,0 +1,125 @@
+---
+title: "Homework Assignment (1)"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+### Task A
+```{r}
+# Set seed value for reproducibility
+set.seed(10)
+range <- -10:30
+size <- 20
+
+# Create four vectors with 20 random integer values each (between -10 and 30)
+v1 <- sample(range, size = size)
+v2 <- sample(range, size = size)
+v3 <- sample(range, size = size)
+v4 <- sample(range, size = size)
+
+
+# Combine the vectors above to create a matrix (column-wise)
+mat <- matrix(c(v1, v2, v3, v4), nrow = 20, ncol = 4)
+
+
+# Print the matrix
+print(mat)
+
+
+# Print the size of the matrix
+print(dim(mat))
+
+
+# Print the transpose of the matrix
+print(t(mat))
+```
+
+
+
+### Task B
+```{r}
+# Create a function to find the common elements in two vectors
+find_common_elements <- function (x, y) {
+    return (intersect(x, y))
+}
+
+
+# Sample input 1 (integers)
+x <- 1:10
+y <- 8:11
+common <- find_common_elements(x, y)
+
+
+print(common)
+
+
+# Sample input 2 (strings)
+x <- c("fort wayne", "chicago", "indianapolis", "austin")
+y <- c("chicago", "fort wayne", "dallas", "boston", "cleveland")
+common <- find_common_elements(x, y)
+
+
+print(common)
+
+
+# Sample input 3 (boolean)
+x <- c(T, T, F, F, F, T, T)
+y <- c(F, F, F, F, T, T, T)
+common <- find_common_elements(x, y)
+
+
+print(common)
+```
+
+
+### Task C
+```{r}
+# i. Create the data frame
+column_names <- c("name", "type", "diameter", "rotation", "rings")
+c1 <- c("Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune")
+
+
+c2 <- c("Terrestrial planet", "Terrestrial planet", "Terrestrial planet", "Terrestrial planet", "Gas giant", "Gas giant", "Gas giant", "Gas giant")
+
+
+c3 <- c(0.382, 0.949, 1.000, 0.532, 11.209, 9.449, 4.007, 3.883)
+
+
+c4 <- c(58.64, -243.02, 1.00, 1.03, 0.41, 0.43, -0.72, 0.67)
+
+
+c5 <- c(F, F, F, F, T, T, T, T)
+
+
+
+planet_df <- data.frame(c1, c2, c3, c4, c5)
+names(planet_df) <- column_names
+attach(planet_df)
+
+
+
+# Print the data frame
+print(planet_df)
+
+
+
+# ii. Print the diameter of Venus
+print(planet_df$diameter[name == "Venus"])
+
+
+
+# iii. Print the details for the planet with the largest diameter
+print(planet_df[diameter == max(diameter), ])
+
+
+
+# iv. Print the names of gas giants
+print(planet_df$name[type == "Gas giant"])
+
+
+
+# v. Sort the data frame by diameter
+print(planet_df[order(diameter, decreasing = T), ])
+```
+
