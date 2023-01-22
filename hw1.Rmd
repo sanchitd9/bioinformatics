@@ -5,7 +5,7 @@ output:
   html_document: default
 ---
 
-### Task A
+## Task A
 ```{r}
 # Set seed value for reproducibility
 set.seed(10)
@@ -36,8 +36,8 @@ print(t(mat))
 ```
 
 
-
-### Task B
+  
+## Task B
 ```{r}
 # Create a function to find the common elements in two vectors
 find_common_elements <- function (x, y) {
@@ -53,7 +53,7 @@ common <- find_common_elements(x, y)
 
 print(common)
 
-
+  
 # Sample input 2 (strings)
 x <- c("fort wayne", "chicago", "indianapolis", "austin")
 y <- c("chicago", "fort wayne", "dallas", "boston", "cleveland")
@@ -62,7 +62,7 @@ common <- find_common_elements(x, y)
 
 print(common)
 
-
+  
 # Sample input 3 (boolean)
 x <- c(T, T, F, F, F, T, T)
 y <- c(F, F, F, F, T, T, T)
@@ -72,8 +72,8 @@ common <- find_common_elements(x, y)
 print(common)
 ```
 
-
-### Task C
+  
+## Task C
 ```{r}
 # i. Create the data frame
 column_names <- c("name", "type", "diameter", "rotation", "rings")
@@ -103,22 +103,22 @@ attach(planet_df)
 print(planet_df)
 
 
-
+  
 # ii. Print the diameter of Venus
 print(planet_df$diameter[name == "Venus"])
 
 
-
+  
 # iii. Print the details for the planet with the largest diameter
 print(planet_df[diameter == max(diameter), ])
 
 
-
+  
 # iv. Print the names of gas giants
 print(planet_df$name[type == "Gas giant"])
 
 
-
+  
 # v. Sort the data frame by diameter
 print(planet_df[order(diameter, decreasing = T), ])
 ```
