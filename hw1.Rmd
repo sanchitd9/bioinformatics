@@ -2,7 +2,6 @@
 title: "Homework Assignment (1)"
 output:
   pdf_document: default
-  html_document: default
 ---
 
 ## Task A
