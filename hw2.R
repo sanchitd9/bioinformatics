@@ -84,3 +84,33 @@ random_prop <- proportions(random_count)
 print(random_prop)
 
 pie(random_prop, labels = paste(names(random_prop), "=", round(random_prop * 100, 2), "%"), col = colors)
+
+
+# ----------------------------
+# Task E
+# ----------------------------
+freq_codons <- function (seq) {
+  codons <- count(seq, 3)
+  codons <- codons[order(codons, decreasing = TRUE)]
+  return (head(codons, 3))
+}
+
+# Testing the function on 2 sequences
+freq_codons(getSequence(all_sequences[[125]]))
+
+freq_codons(getSequence(all_sequences[[567]]))
+
+
+# ----------------------------
+# Task F
+# ----------------------------
+
+# Write a function that returns all under-represented DNA words with a
+# specific length
+under_represented <- function (seq, length) {
+  rep <- rho(seq, wordsize = length)
+  return (rep[rep < 1])
+}
+
+under_represented(getSequence(all_sequences[[876]]), 2)
+under_represented(getSequence(all_sequences[[1024]]), 4)
