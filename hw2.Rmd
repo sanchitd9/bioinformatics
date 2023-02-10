@@ -119,8 +119,10 @@ under_represented <- function (seq, length) {
   return (rep[rep < 1])
 }
 
-# Testing the function on two sequences of length 2 and 4 respectively
+# Testing the function on sequences of length 2 and 4
 under_represented(getSequence(all_sequences[[876]]), 2)
+under_represented(getSequence(all_sequences[[876]]), 4)
+under_represented(getSequence(all_sequences[[1024]]), 2)
 under_represented(getSequence(all_sequences[[1024]]), 4)
 ```
 
