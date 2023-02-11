@@ -38,6 +38,9 @@ vignettes/*.pdf
 # R Environment Variables
 .Renviron
 
+# LaTeX files
 *.tex
 *.log
 *.aux
+
+peer_evaluations/
