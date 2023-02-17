@@ -344,6 +344,8 @@ s <- paste(seqs, collapse = "")
 s1 <- findORFsinSeq(s)
 length(s1[[1]])
 
+s1
+
 max(s1[[3]])
 
 
@@ -377,4 +379,34 @@ generateSeqsWithMultinomialModel <- function(inputsequence, X)
   return(seqs)
 }
 
-generateSeqsWithMultinomialModel(s, 10)[1]
+random_seqs <- generateSeqsWithMultinomialModel(s, 10)
+
+orfs <- lapply(random_seqs, findORFsinSeq)
+
+my_vector <- numeric()
+
+for (ele in orfs) {
+  print(max(ele[[3]]))
+
+  my_vector <- append(my_vector, max(ele[[3]]))
+}
+
+my_vector
+
+threshold <- quantile(my_vector, c(0.45))
+
+possible_genes <- s1[[3]][s1[[3]] > threshold]
+
+possible_genes
+
+start <- s1[[1]][s1[[3]] == possible_genes]
+end <- s1[[2]][s1[[3]] == possible_genes]
+start
+end
+
+strsplit(s, split="")[1]
+
+the_gene <- strsplit(s, split="")[[1]][start:end]
+
+
+
