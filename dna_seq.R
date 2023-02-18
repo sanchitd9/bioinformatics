@@ -86,7 +86,6 @@ plotPotentialStartsAndStops <- function(sequence)
     # Find all occurrences of codon "codon" in sequence "sequence"
     occurrences <- matchPattern(codon, sequence)
     # Find the start positions of all occurrences of "codon" in sequence "sequence"
-    # codonpositions <- attr(occurrences,"start")
     codonpositions <- start(occurrences)
     # Find the total number of potential start and stop codons in sequence "sequence"
     numoccurrences <- length(codonpositions)
@@ -407,6 +406,6 @@ end
 strsplit(s, split="")[1]
 
 the_gene <- strsplit(s, split="")[[1]][start:end]
-
+the_gene
 
 
