@@ -279,7 +279,7 @@ accession_number <- "FJ882953"
 q <- query("q", paste("AC=", accession_number, sep = ""))
 ```
 
-```{r taskA1, echo=FALSE}
+```{r taskA1}
 # Print the details
 print(paste("Retrieved", q$nelem, "sequence(s) for Accession Number:", accession_number))
 print(paste("Length of the sequence:", getLength(q)))
