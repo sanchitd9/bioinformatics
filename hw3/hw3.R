@@ -28,31 +28,42 @@ print(reverse_comp_seq)
 
 # Print all the potential ORFs in the reverse complement of the sequence
 orfs_rev_comp <- findORFs(as.character(reverse_comp_seq))
-print(orfs_rev_comp[, c("start", "end", "length")])
+print(orfs_rev_comp[, c("start", "end", "length")], max = 10000)
 
 # Plot potential ORFs in the last 1000 bases
-plotORFsinSeq(c2s(tail(seq_vector, 1000)))
+plotORFsinSeq(tail(reverse_comp_seq, 1000))
 
 # Extract, translate and print the longest potential gene
-potential_orfs <- findORFs(as.character(seq_str))
-longest_gene <- potential_orfs[as.numeric(potential_orfs[, "length"]) == max(as.numeric(potential_orfs[, "length"]))]
-print(paste("The longest gene starts at index", longest_gene[1], "and ends at index", longest_gene[2]))
-print(paste("Length of the longest gene:", longest_gene[3]))
-print("The longest gene:")
-print(DNAString(longest_gene[4]))
+max_length <- max(as.numeric(orfs_rev_comp[, "length"]))
+longest_gene <- orfs_rev_comp[as.numeric(orfs_rev_comp[, "length"]) == max_length, ]
 
-protein <- translate(DNAString(longest_gene[4]))
-print(paste("The resulting protein sequence of length:", length(protein)))
-print(protein)
+print(paste("Length of the maximum potential gene:",max_length))
+print(paste("There are", dim(longest_gene)[1], "sequences with the maximum length of", max_length))
+
+for (i in 1:dim(longest_gene)[1]) {
+  print(paste("Sequence", i, ": Start =", longest_gene[i, "start"], ", End =", longest_gene[i, "end"]))
+  l_seq <- DNAString(longest_gene[i, "orf.sequence"])
+  print(l_seq)
+  protein <- Biostrings::translate(l_seq)
+  print("The resulting protein sequence:")
+  print(protein)
+}
 
 # Identify the significant ORFs using the 95th percentile as the threshold value.
-random_seqs <- generateSeqsWithMultinomialModel(c2s(seq_vector), 30)
+random_seqs <- generateSeqsWithMultinomialModel(c2s(reverse_comp_seq), 30)
 random_orfs <- lapply(random_seqs, findORFs)
 
 length_vector <- sapply(random_orfs, get_max_seq_vector)
+length_vector <- unlist(length_vector)
 
 threshold <- quantile(length_vector, 0.95)
+cat(threshold)
 
-significant_orfs <- potential_orfs[as.numeric(potential_orfs[, "length"]) > threshold, ]
+significant_orfs <- orfs_rev_comp[as.numeric(orfs_rev_comp[, "length"]) > threshold, ]
 print("Significant ORFs:")
-print(significant_orfs[, c("start", "end", "length")])
+
+for (i in 1:dim(significant_orfs)[1]) {
+  print(paste("Sequence", i, ": Start =", significant_orfs[i, "start"], ", End =", significant_orfs[i, "end"], ", Length =", significant_orfs[i, "length"]))
+  print(DNAString(significant_orfs[i, "orf.sequence"]))
+}
+

@@ -244,5 +244,6 @@ generateSeqsWithMultinomialModel <- function(inputsequence, X)
 }
 
 get_max_seq_vector <- function (x) {
-  return (max(as.numeric(x[,"length"])))
+  return (as.numeric(x[,"length"]))
 }
+
