@@ -263,7 +263,7 @@ generateSeqsWithMultinomialModel <- function(inputsequence, X)
   return (as.list(seqs))
 }
 
-get_max_seq_vector <- function (x) {
+get_length_vector <- function (x) {
   return (as.numeric(x[,"length"]))
 }
 
@@ -338,7 +338,7 @@ for (i in 1:dim(longest_gene)[1]) {
 random_seqs <- generateSeqsWithMultinomialModel(c2s(reverse_comp_seq), 30)
 random_orfs <- lapply(random_seqs, findORFs)
 
-length_vector <- unlist(sapply(random_orfs, get_max_seq_vector))
+length_vector <- unlist(sapply(random_orfs, get_length_vector))
 
 threshold <- quantile(length_vector, 0.95)
 cat("Threshold:", threshold, "\n\n")
@@ -347,7 +347,7 @@ significant_orfs <- orfs_rev_comp[as.numeric(orfs_rev_comp[, "length"]) > thresh
 cat("Significant ORFs:\n\n")
 
 for (i in 1:dim(significant_orfs)[1]) {
-  cat("Sequence", i, ": Start =", significant_orfs[i, "start"], ", End =", significant_orfs[i, "end"], ", Length =", significant_orfs[i, "length"])
+  cat("Sequence", i, ": Start =", significant_orfs[i, "start"], ", End =", significant_orfs[i, "end"], ", Length =", significant_orfs[i, "length"], "\n")
   print(DNAString(significant_orfs[i, "orf.sequence"]))
   cat("\n")
 }
@@ -611,7 +611,7 @@ generateSeqsWithMultinomialModel <- function(inputsequence, X)
   return (as.list(seqs))
 }
 
-get_max_seq_vector <- function (x) {
+get_length_vector <- function (x) {
   return (as.numeric(x[,"length"]))
 }
 ```
