@@ -320,7 +320,7 @@ cat("There are", dim(longest_gene)[1], "sequences with the maximum length of", m
 
 ```{r taskD1, echo=TRUE}
 for (i in 1:dim(longest_gene)[1]) {
-  cat("Sequence", i, ": Start =", longest_gene[i, "start"], ", End =", longest_gene[i, "end"])
+  cat("Sequence", i, ": Start =", longest_gene[i, "start"], ", End =", longest_gene[i, "end"], "\n")
   l_seq <- DNAString(longest_gene[i, "orf.sequence"])
   print(l_seq)
   protein <- Biostrings::translate(l_seq)
@@ -365,7 +365,7 @@ be used as a measure, as long ORFs cannot happen by chance. Small ORFs have a hi
 
 ## Methods used in this assignment
 
-```{r functionInfo, eval=FALSE}
+```{r functionInfo, eval=FALSE, include = FALSE}
 findPotentialStartsAndStops <- function(sequence)
 {
   # Define a vector with the sequences of potential start and stop codons
