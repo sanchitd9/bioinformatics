@@ -333,6 +333,12 @@ for (i in 1:dim(longest_gene)[1]) {
 
 ## Task E and F
 
+```{r blah, eval = FALSE}
+get_length_vector <- function (x) {
+  return (as.numeric(x[,"length"]))
+}
+```
+
 ```{r taskEandF}
 # Identify the significant ORFs using the 95th percentile as the threshold value.
 random_seqs <- generateSeqsWithMultinomialModel(c2s(reverse_comp_seq), 30)
@@ -363,7 +369,6 @@ be used as a measure, as long ORFs cannot happen by chance. Small ORFs have a hi
 
 
 
-## Methods used in this assignment
 
 ```{r functionInfo, eval=FALSE, include = FALSE}
 findPotentialStartsAndStops <- function(sequence)
