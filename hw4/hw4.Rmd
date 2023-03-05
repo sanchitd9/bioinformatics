@@ -55,9 +55,11 @@ colors1 <- c("#edbc72", "#77b072", "#35689c", "#f095c5")
 colors2 <- c("#7fb6ba", "#6e1930", "#990681", "#dfe866")
 
 par(mfrow = c(1, 2))
-pie(seq1_prop, labels = paste(names(seq1_prop), "=", round(seq1_prop * 100, 3), "%"), col = colors1, main = ac_1)
-pie(seq2_prop, labels = paste(names(seq2_prop), "=", round(seq2_prop * 100, 3), "%"), col = colors2, main = ac_2)
+pie(seq1_prop, labels = paste(names(seq1_prop), "=", round(seq1_prop * 100, 3), "%", sep = ""), col = colors1, main = ac_1)
+pie(seq2_prop, labels = paste(names(seq2_prop), "=", round(seq2_prop * 100, 3), "%", sep = ""), col = colors2, main = ac_2)
 ```
+
+
 # Task C
 ```{r taskC}
 seq1_orfs <- findORFs(c2s(seq1))
@@ -66,6 +68,13 @@ seq2_orfs <- findORFs(c2s(seq2))
 par(mfrow = c(1, 1))
 dotPlot(s2c(seq1_orfs[1, "orf.sequence"]), s2c(seq2_orfs[1, "orf.sequence"]), xlab = ac_1, ylab = ac_2)
 ```
+
+The symmetric nature of the plot reveals that the two sequences are almost identical. In fact, by doing a direct comparison
+we can see that they are exactly the same!
+```{r taskC1}
+print(seq1_orfs[1, "orf.sequence"] == seq2_orfs[1, "orf.sequence"])
+```
+
 
 # Task D
 ```{r taskD}
@@ -92,15 +101,13 @@ hist(scores)
 p_value <- sum(scores > score(opt_ga)) / length(scores)
 print(p_value)
 ```
+The global alignment is statistically significant as the p-value is below 0.05. This means that the odds of this alignment 
+happening by chance are extremely low.
 
 # Task F
 ```{r taskF}
 opt_la <- pairwiseAlignment(DNAString(c2s(seq1)), DNAString(c2s(seq2)), type = "local", substitutionMatrix = nucleotideSubstitutionMatrix(match = 3, mismatch = -2, baseOnly = TRUE), gapOpening = -4, gapExtension = -2)
 print(opt_la)
+print("Length of the alignment:")
+print(nchar(pattern(opt_la)))
 ```
-
-
-
-
-
-
