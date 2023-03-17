@@ -35,7 +35,7 @@ print(DNAString(c2s(seq2)))
 p1 <- seqinr::translate(seq1)
 p2 <- seqinr::translate(seq2)
 
-seq1_count <-table(p1)
+seq1_count <- table(p1)
 seq2_count <- table(p2)
 print(seq1_count)
 print(seq2_count)
@@ -45,13 +45,17 @@ seq2_prop <- proportions(seq2_count)
 print(seq1_prop)
 print(seq2_prop)
 
-df1 <- data.frame(slices = seq1_prop, "amino_acids" = paste(names(seq1_prop), "=", round(seq1_prop * 100, 2), "%", sep = ""))
+theme_update(legend.position = "bottom")
+df1 <- data.frame(slices = seq1_prop, amino_acids = paste(names(seq1_prop), "=", round(seq1_prop * 100, 2), "%", sep = ""))
 df2 <- data.frame(slices = seq2_prop, amino_acids = paste(names(seq2_prop), "=", round(seq2_prop * 100, 2), "%", sep = ""))
-plot1 <- ggplot(df1, aes(x = "", y = slices.Freq, fill = amino_acids)) + geom_bar(stat = "identity", width = 1) + coord_polar("y", start = 0) + ggtitle(ac_1) + xlab("") + ylab("")
-plot2 <- ggplot(df2, aes(x = "", y = slices.Freq, fill = amino_acids)) + geom_bar(stat = "identity", width = 1) + coord_polar("y", start = 0) + ggtitle(ac_2) + xlab("") + ylab("")
+plot1 <- ggplot(df1, aes(x = "", y = slices.Freq, fill = amino_acids)) + geom_bar(stat = "identity", width = 1) + coord_polar("y", start = 0) + ggtitle(ac_1) + xlab("") + ylab("") + guides(fill = guide_legend(title = NULL))
+plot2 <- ggplot(df2, aes(x = "", y = slices.Freq, fill = amino_acids)) + geom_bar(stat = "identity", width = 1) + coord_polar("y", start = 0) + ggtitle(ac_2) + xlab("") + ylab("") + guides(fill = guide_legend(title = NULL))
 grid.arrange(plot1, plot2, ncol = 2)
 
 # Task C
+seq1_orfs <- findORFs(c2s(seq1))
+seq2_orfs <- findORFs(c2s(seq2))
+
 dotPlot(s2c(seq1_orfs[1, "orf.sequence"]), s2c(seq2_orfs[1, "orf.sequence"]), xlab = ac_1, ylab = ac_2)
 
 # Task D

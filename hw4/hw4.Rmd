@@ -16,6 +16,8 @@ source("~/bioinformatics/hw3/hw3_func.R")
 require(seqinr)
 require(Biostrings)
 require(ORFhunteR)
+require(gridExtra)
+require(ggplot2)
 
 choosebank("genbank")
 ```
@@ -41,8 +43,11 @@ print(DNAString(c2s(seq2)))
 
 # Task B
 ```{r taskB}
-seq1_count <- table(seq1)
-seq2_count <- table(seq2)
+p1 <- seqinr::translate(seq1)
+p2 <- seqinr::translate(seq2)
+
+seq1_count <- table(p1)
+seq2_count <- table(p2)
 print(seq1_count)
 print(seq2_count)
 
@@ -51,12 +56,12 @@ seq2_prop <- proportions(seq2_count)
 print(seq1_prop)
 print(seq2_prop)
 
-colors1 <- c("#edbc72", "#77b072", "#35689c", "#f095c5")
-colors2 <- c("#7fb6ba", "#6e1930", "#990681", "#dfe866")
-
-par(mfrow = c(1, 2))
-pie(seq1_prop, labels = paste(names(seq1_prop), "=", round(seq1_prop * 100, 3), "%", sep = ""), col = colors1, main = ac_1)
-pie(seq2_prop, labels = paste(names(seq2_prop), "=", round(seq2_prop * 100, 3), "%", sep = ""), col = colors2, main = ac_2)
+theme_update(legend.background = element_rect(fill = "gray90", size = 0.5, linetype = "dotted"), legend.direction = "horizontal")
+df1 <- data.frame(slices = seq1_prop, amino_acids = paste(names(seq1_prop), "=", round(seq1_prop * 100, 2), "%", sep = ""))
+df2 <- data.frame(slices = seq2_prop, amino_acids = paste(names(seq2_prop), "=", round(seq2_prop * 100, 2), "%", sep = ""))
+plot1 <- ggplot(df1, aes(x = "", y = slices.Freq, fill = amino_acids)) + geom_bar(stat = "identity", width = 1) + coord_polar("y", start = 0) + ggtitle(ac_1) + xlab("") + ylab("") + guides(fill = guide_legend(title = NULL))
+plot2 <- ggplot(df2, aes(x = "", y = slices.Freq, fill = amino_acids)) + geom_bar(stat = "identity", width = 1) + coord_polar("y", start = 0) + ggtitle(ac_2) + xlab("") + ylab("") + guides(fill = guide_legend(title = NULL))
+grid.arrange(plot1, plot2, nrow = 2)
 ```
 
 
@@ -65,7 +70,6 @@ pie(seq2_prop, labels = paste(names(seq2_prop), "=", round(seq2_prop * 100, 3), 
 seq1_orfs <- findORFs(c2s(seq1))
 seq2_orfs <- findORFs(c2s(seq2))
 
-par(mfrow = c(1, 1))
 dotPlot(s2c(seq1_orfs[1, "orf.sequence"]), s2c(seq2_orfs[1, "orf.sequence"]), xlab = ac_1, ylab = ac_2)
 ```
 
