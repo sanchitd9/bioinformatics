@@ -95,7 +95,8 @@ seq2_random <- generateSeqsWithMultinomialModel(c2s(seq2), 20)
 
 scores <- c()
 for (i in 1:20) {
-  score <- pairwiseAlignment(DNAString(c2s(seq1_random[[i]])), DNAString(c2s(seq2_random[[i]])), type = "global", substitutionMatrix = nucleotideSubstitutionMatrix(match = 2, mismatch = -1, baseOnly = TRUE), gapOpening = 0, gapExtension = -2, scoreOnly = TRUE)
+  score <- pairwiseAlignment(DNAString(c2s(seq1_random[[i]])), DNAString(c2s(seq2_random[[i]])), type = "global", substitutionMatrix = 
+nucleotideSubstitutionMatrix(match = 2, mismatch = -1, baseOnly = TRUE), gapOpening = 0, gapExtension = -2, scoreOnly = TRUE)
   scores <- append(scores, score)
 }
 
