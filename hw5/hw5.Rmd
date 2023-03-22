@@ -1,14 +1,14 @@
 ---
 title: "Homework Assignment"
-subtitle: "Protein Sequence Alignment"
+subtitle: Protein Sequence Alignment
+date: "03-17-2023"
 output:
   pdf_document: default
-date: "03-17-2023"
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo=TRUE)
-knitr::opts_chunk$set(cache=TRUE)
+knitr::opts_chunk$set(cache=FALSE)
 knitr::opts_chunk$set(tidy=TRUE)
 knitr::opts_chunk$set(tidy.opts=list(width.cutoff = 60))
 source("~/bioinformatics/hw3/hw3_func.R")
@@ -21,45 +21,6 @@ require(cli)
 # choosebank("swissprot")
 data("PAM250")
 data("BLOSUM62")
-```
-
-```{r functions, include=FALSE}
-printPairwiseAlignment <- function(alignment, chunksize=60, returnlist=FALSE)
-{
-  require(Biostrings) # This function requires the Biostrings package
-  seq1aln <- pattern(alignment) # Get the alignment for the first sequence
-  seq2aln <- subject(alignment) # Get the alignment for the second sequence
-  alnlen <- nchar(seq1aln) # Find the number of columns in the alignment
-  starts <- seq(1, alnlen, by=chunksize)
-  n <- length(starts)
-  seq1alnresidues <- 0
-  seq2alnresidues <- 0
-  for (i in 1:n) {
-    chunkseq1aln <- substring(seq1aln, starts[i], starts[i]+chunksize-1)
-    chunkseq2aln <- substring(seq2aln, starts[i], starts[i]+chunksize-1)
-    # Find out how many gaps there are in chunkseq1aln:
-    gaps1 <- countPattern("-",chunkseq1aln) # countPattern() is from Biostrings package
-    # Find out how many gaps there are in chunkseq2aln:
-    gaps2 <- countPattern("-",chunkseq2aln) # countPattern() is from Biostrings package
-    # Calculate how many residues of the first sequence we have printed so far in the alignment:
-    seq1alnresidues <- seq1alnresidues + chunksize - gaps1
-    # Calculate how many residues of the second sequence we have printed so far in the alignment:
-      seq2alnresidues <- seq2alnresidues + chunksize - gaps2
-    if (returnlist == 'FALSE')
-    {
-      print(paste(chunkseq1aln, seq1alnresidues))
-      print(paste(chunkseq2aln, seq2alnresidues))
-      print(paste(' '))
-    }
-  }
-  if (returnlist == 'TRUE')
-  {
-    vector1 <- s2c(substring(seq1aln, 1, nchar(seq1aln)))
-    vector2 <- s2c(substring(seq2aln, 1, nchar(seq2aln)))
-    mylist <- list(vector1, vector2)
-    return(mylist)
-  }
-}
 ```
 
 ```{r dummy, include=FALSE}
@@ -120,19 +81,66 @@ There is no similarity between the last 50 characters of the two sequences, evid
 
 # Task D
 
+```{r functions, include=TRUE}
+printPairwiseAlignment <- function(alignment, chunksize=60, returnlist=FALSE)
+{
+  require(Biostrings) # This function requires the Biostrings package
+  seq1aln <- pattern(alignment) # Get the alignment for the first sequence
+  seq2aln <- subject(alignment) # Get the alignment for the second sequence
+  alnlen <- nchar(seq1aln) # Find the number of columns in the alignment
+  starts <- seq(1, alnlen, by=chunksize)
+  n <- length(starts)
+  seq1alnresidues <- 0
+  seq2alnresidues <- 0
+  for (i in 1:n) {
+    chunkseq1aln <- substring(seq1aln, starts[i], starts[i]+chunksize-1)
+    chunkseq2aln <- substring(seq2aln, starts[i], starts[i]+chunksize-1)
+    # Find out how many gaps there are in chunkseq1aln:
+    gaps1 <- countPattern("-",chunkseq1aln) # countPattern() is from Biostrings package
+    # Find out how many gaps there are in chunkseq2aln:
+    gaps2 <- countPattern("-",chunkseq2aln) # countPattern() is from Biostrings package
+    # Calculate how many residues of the first sequence we have printed so far in the alignment:
+    seq1alnresidues <- seq1alnresidues + chunksize - gaps1
+    # Calculate how many residues of the second sequence we have printed so far in the alignment:
+      seq2alnresidues <- seq2alnresidues + chunksize - gaps2
+    if (returnlist == 'FALSE')
+    {
+      cat(paste0("\\textcolor{blue}{", chunkseq1aln, " ", seq1alnresidues, "}", "\\newline"))
+      cat(paste0("\\textcolor{red}{", chunkseq2aln, " ", seq2alnresidues, "}", "\\newline"))
+      cat(paste0("  \\newline"))
+      # print(paste(chunkseq1aln, seq1alnresidues))
+      # print(paste(chunkseq2aln, seq2alnresidues))
+      # print(paste(' '))
+    }
+  }
+  if (returnlist == 'TRUE')
+  {
+    vector1 <- s2c(substring(seq1aln, 1, nchar(seq1aln)))
+    vector2 <- s2c(substring(seq2aln, 1, nchar(seq2aln)))
+    mylist <- list(vector1, vector2)
+    return(mylist)
+  }
+}
+```
+
 ```{r taskD}
 ga <- pairwiseAlignment(AAString(c2s(seq1)), AAString(c2s(seq2)), substitutionMatrix = PAM250, type = "global", gapOpening = -10, gapExtension = -0.5)
 print(ga)
+```
 
+```{r taskD1, results='asis'}
 printPairwiseAlignment(ga, chunksize = 30)
 ```
+  
 
 # Task E
 
 ```{r taskE}
 la <- pairwiseAlignment(AAString(c2s(seq1)), AAString(c2s(seq2)), substitutionMatrix = BLOSUM62, type = "local", gapOpening = -10, gapExtension = -0.5)
 print(la)
+```
 
+```{r taskE1, results='asis'}
 printPairwiseAlignment(la, chunksize = 30)
 ```
 The local alignment's score is higher than the global alignment. With the pairwise printed output we can see that there is just a single mismatch.
@@ -165,3 +173,4 @@ print(p_local)
 
 
 Both the alignments are statistically significant as the 'p' values for both are less than 0.05.
+
