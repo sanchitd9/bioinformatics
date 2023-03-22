@@ -1,0 +1,167 @@
+---
+title: "Homework Assignment"
+subtitle: "Protein Sequence Alignment"
+output:
+  pdf_document: default
+date: "03-17-2023"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE)
+knitr::opts_chunk$set(cache=TRUE)
+knitr::opts_chunk$set(tidy=TRUE)
+knitr::opts_chunk$set(tidy.opts=list(width.cutoff = 60))
+source("~/bioinformatics/hw3/hw3_func.R")
+require(seqinr)
+require(Biostrings)
+require(ggplot2)
+require(gridExtra)
+require(cli)
+
+# choosebank("swissprot")
+data("PAM250")
+data("BLOSUM62")
+```
+
+```{r functions, include=FALSE}
+printPairwiseAlignment <- function(alignment, chunksize=60, returnlist=FALSE)
+{
+  require(Biostrings) # This function requires the Biostrings package
+  seq1aln <- pattern(alignment) # Get the alignment for the first sequence
+  seq2aln <- subject(alignment) # Get the alignment for the second sequence
+  alnlen <- nchar(seq1aln) # Find the number of columns in the alignment
+  starts <- seq(1, alnlen, by=chunksize)
+  n <- length(starts)
+  seq1alnresidues <- 0
+  seq2alnresidues <- 0
+  for (i in 1:n) {
+    chunkseq1aln <- substring(seq1aln, starts[i], starts[i]+chunksize-1)
+    chunkseq2aln <- substring(seq2aln, starts[i], starts[i]+chunksize-1)
+    # Find out how many gaps there are in chunkseq1aln:
+    gaps1 <- countPattern("-",chunkseq1aln) # countPattern() is from Biostrings package
+    # Find out how many gaps there are in chunkseq2aln:
+    gaps2 <- countPattern("-",chunkseq2aln) # countPattern() is from Biostrings package
+    # Calculate how many residues of the first sequence we have printed so far in the alignment:
+    seq1alnresidues <- seq1alnresidues + chunksize - gaps1
+    # Calculate how many residues of the second sequence we have printed so far in the alignment:
+      seq2alnresidues <- seq2alnresidues + chunksize - gaps2
+    if (returnlist == 'FALSE')
+    {
+      print(paste(chunkseq1aln, seq1alnresidues))
+      print(paste(chunkseq2aln, seq2alnresidues))
+      print(paste(' '))
+    }
+  }
+  if (returnlist == 'TRUE')
+  {
+    vector1 <- s2c(substring(seq1aln, 1, nchar(seq1aln)))
+    vector2 <- s2c(substring(seq2aln, 1, nchar(seq2aln)))
+    mylist <- list(vector1, vector2)
+    return(mylist)
+  }
+}
+```
+
+```{r dummy, include=FALSE}
+ac_1 <- "A0A1I9G1P5"
+ac_2 <- "A0A1S0U2K5"
+seq1 <- toupper(getSequence(read.fasta(file = paste("~/bioinformatics/hw5/", ac_1, ".fasta", sep = "")))[[1]])
+seq2 <- toupper(getSequence(read.fasta(file = paste("~/bioinformatics/hw5/", ac_2, ".fasta", sep = "")))[[1]])
+```
+
+# Task A
+
+```{r taskA, eval=FALSE}
+choosebank("swissprot")
+ac_1 <- "A0A1I9G1P5"
+ac_2 <- "A0A1S0U2K5"
+
+q1 <- query("q1", query = paste("AC=", ac_1, sep = ""))
+q2 <- query("q2", query = paste("AC=", ac_2, sep = ""))
+
+seq1 <- getSequence(q1$req[[1]])
+seq2 <- getSequence(q2$req[[1]])
+```
+```{r taskA1}
+print(AAString(c2s(seq1)))
+print(AAString(c2s(seq2)))
+```
+
+# Task B
+
+```{r taskB}
+count_seq1 <- table(seq1)
+count_seq2 <- table(seq2)
+
+print(count_seq1)
+print(count_seq2)
+
+prop_seq1 <- proportions(count_seq1)
+prop_seq2 <- proportions(count_seq2)
+
+print(prop_seq1)
+print(prop_seq2)
+
+theme_update(legend.key.size = unit(4, "mm"), legend.text = element_text(size = 6), axis.text = element_blank(), axis.ticks = element_blank(), panel.grid  = element_blank())
+df1 <- data.frame(slices = prop_seq1, amino_acids = paste(names(prop_seq1), "=", round(prop_seq1 * 100, 2), "%", sep = ""))
+df2 <- data.frame(slices = prop_seq2, amino_acids = paste(names(prop_seq2), "=", round(prop_seq2 * 100, 2), "%", sep = ""))
+plot1 <- ggplot(df1, aes(x = "", y = slices.Freq, fill = amino_acids)) + geom_bar(stat = "identity", width = 1) + coord_polar("y", start = 0) + ggtitle(ac_1) + xlab("") + ylab("") + guides(fill = guide_legend(title = NULL))
+plot2 <- ggplot(df2, aes(x = "", y = slices.Freq, fill = amino_acids)) + geom_bar(stat = "identity", width = 1) + coord_polar("y", start = 0) + ggtitle(ac_2) + xlab("") + ylab("") + guides(fill = guide_legend(title = NULL))
+grid.arrange(plot1, plot2, ncol = 2)
+```
+
+# Task C
+
+```{r taskC}
+dotPlot(tail(seq1, 50), tail(seq2, 50), xlab = ac_1, ylab = ac_2)
+```
+
+There is no similarity between the last 50 characters of the two sequences, evidenced by the lack of a diagonal line on the graph.
+
+# Task D
+
+```{r taskD}
+ga <- pairwiseAlignment(AAString(c2s(seq1)), AAString(c2s(seq2)), substitutionMatrix = PAM250, type = "global", gapOpening = -10, gapExtension = -0.5)
+print(ga)
+
+printPairwiseAlignment(ga, chunksize = 30)
+```
+
+# Task E
+
+```{r taskE}
+la <- pairwiseAlignment(AAString(c2s(seq1)), AAString(c2s(seq2)), substitutionMatrix = BLOSUM62, type = "local", gapOpening = -10, gapExtension = -0.5)
+print(la)
+
+printPairwiseAlignment(la, chunksize = 30)
+```
+The local alignment's score is higher than the global alignment. With the pairwise printed output we can see that there is just a single mismatch.
+
+# Task F
+
+```{r taskF}
+rand_seq1 <- generateSeqsWithMultinomialModel(c2s(seq1), 10)
+rand_seq2 <- generateSeqsWithMultinomialModel(c2s(seq2), 10)
+
+scores_global <- c()
+scores_local <- c()
+
+for (i in 1:length(rand_seq1)) {
+  score_global <- pairwiseAlignment(pattern = AAString(c2s(rand_seq1[[i]])), subject = AAString(c2s(rand_seq2[[i]])), substitutionMatrix = PAM250, gapOpening = -10, gapExtension = -0.5, type = "global", scoreOnly = TRUE)
+  score_local <- pairwiseAlignment(pattern = AAString(c2s(rand_seq1[[i]])), subject = AAString(c2s(rand_seq2[[i]])), substitutionMatrix = BLOSUM62, gapOpening = -10, gapExtension = -0.5, type = "local", scoreOnly = TRUE)
+  scores_global <- append(scores_global, score_global)
+  scores_local <- append(scores_local, score_local)
+}
+
+hist(scores_global)
+hist(scores_local)
+
+p_global <- sum(scores_global > score(ga)) / length(scores_global)
+p_local <- sum(scores_local > score(la)) / length(scores_local)
+
+print(p_global)
+print(p_local)
+```
+
+
+Both the alignments are statistically significant as the 'p' values for both are less than 0.05.
