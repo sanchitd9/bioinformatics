@@ -43,5 +43,8 @@ vignettes/*.pdf
 *.tex
 *.log
 *.aux
+*.fdb*
+*.fls
+*.synctex.gz
 
 peer_evaluations/

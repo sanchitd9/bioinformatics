@@ -1,0 +1,146 @@
+CLUSTAL 2.1 multiple sequence alignment
+
+
+sp|Q10572|FOX1_CAEEL        MAELIEEVSTATHASLNACDPIVVNSEALPMQALYQLSATGAQQQNQQIP
+tr|E3M2K8|E3M2K8_CAERE      MQTLYQLSASGAAQQNQQIPIGLGNSLLYQQLAAQQQIAVQQHQQQLAVS
+tr|A8WS01|A8WS01_CAEBR      MQALYQISANGGGGAGQQNQQIPIGLGNSLLYQQLAAQQQIAAQHQQQLA
+tr|Q9VT99|Q9VT99_DROME      MYYPHMVQAGVAPFPGAPAGYAAAPNPGAAVVAAAAAAQQQQQQQQQQQQ
+TrEMBL|E1FUV2|Release       MQALYQLSASAAPQAFQSPGQPPVNLAAMKQFMQAGVSPVLLQQIQVAQQ
+TrEMBL|A8NSK3|Release       VEYIIFLFPMNNAPFWLQIMQALYQLSANAAPQAFQSPGQPPVNLAAMKQ
+                            :       .                                  :      
+
+sp|Q10572|FOX1_CAEEL        IGLSNSLLYQQLAAHQQIAAQQHQQQLAVSAAHQTQNNIMLATSAPSLIN
+tr|E3M2K8|E3M2K8_CAERE      AAHQSQNNIMLATSAPSLINHIENPTESKVKDDPNSDYDLQISIQQHMAA
+tr|A8WS01|A8WS01_CAEBR      VSAAHQSQNNIMLATSAPSALINHMENPTEAKVKDDPNADYDLQLSIQQH
+tr|Q9VT99|Q9VT99_DROME      QQQQAQQQQQQQVAGGPPSAADSLSMAVAAAAAKQSADPVTQMKSGSEAA
+TrEMBL|E1FUV2|Release       QQLAAASAAAAMHQSGGLLAAPVVGTVVSNAEGEKQDEKLAREQYDLQVQ
+TrEMBL|A8NSK3|Release       FMQAGVSPVLLQQIQVAQQQQFAAASAAAAMHQSGGLLAAPVVGTVVSNA
+                                                                              
+
+sp|Q10572|FOX1_CAEEL        HMENSTDGKVKDDPNSDYDLQLSIQQQLAAAAQAAQMGQTQIGPQIVGQQ
+tr|E3M2K8|E3M2K8_CAERE      AAQAAQLGPQMGQPQIGPQIVGQQGQQVAVTTAGPTNGTSAVTQPDPSTS
+tr|A8WS01|A8WS01_CAEBR      MAAAAHAAQAAQAAQMAPQMGQTQIGPQIVGQPGQPVVAAVTTAAGTTNG
+tr|Q9VT99|Q9VT99_DROME      GSGNSNNNNTAGAGTGAPGAAGGLTTEYSSGGCGGGGASTANSVVVATSV
+TrEMBL|E1FUV2|Release       MQMAAVAGIGPQIPQPSTVQSQPAPSNALTTPDPSTSSNSVDGAPKRLHV
+TrEMBL|A8NSK3|Release       ESEKQDEKLAREQYDLQVQMQMAAVAGIGPQIPPPSAVQSQPVAPNALTT
+                                                                   :          
+
+sp|Q10572|FOX1_CAEEL        GQPVVATTAGSTNGSAAVTQPDPSTSSGPDGPKRLHVSNIPFRFRDPDLK
+tr|E3M2K8|E3M2K8_CAERE      SGPDGPKRLHVSNIPFRFRDPDLKTMFEKFGVVSDVEIIFNERGSKGFGF
+tr|A8WS01|A8WS01_CAEBR      TSAVTQPDPSTSSGPDGPKRLHVSNIPFRFRDPDLKTMFEKFGAVSDVEI
+tr|Q9VT99|Q9VT99_DROME      SDVVNASLYMQQKTNLSTQTQTQYEYEYEYNGTSLAEPRVPGPIPHPLTN
+TrEMBL|E1FUV2|Release       SNIPFRFRDPDLRAMFEKYGPVTDVEIIFNERGSKGFGFVTMEKSADAEK
+TrEMBL|A8NSK3|Release       PDPSTSSNSVDSAPKRLHVSNIPFRFRDPDLRAMFEKYGPVTDVEIIFNE
+                                                                              
+
+sp|Q10572|FOX1_CAEEL        TMFEKFGVVSDVEIIFNERGSKGFGFVTMERPQDAERARQELHGSMIEGR
+tr|E3M2K8|E3M2K8_CAERE      VTMERPQDAERARQELHGSMIEGRKIEVNCATARVHSKKVKPAGGILDTM
+tr|A8WS01|A8WS01_CAEBR      IFNERGSKGFGFVTMERPQDAERARQELHGSMIEGRKIEVNCATARVHSK
+tr|Q9VT99|Q9VT99_DROME      GHAVDQVQQPPVQQQHLQSSLPPQNVLSISTVLIANEAAESQQSSAMQNA
+TrEMBL|E1FUV2|Release       ARQELHGSSVEGRKIEVC--------------------------------
+TrEMBL|A8NSK3|Release       RGSKGFGFVTMEKSADAEKARQELHGSSVEGRKIEEWWMLVWRLPHCRVQ
+                                                                              
+
+sp|Q10572|FOX1_CAEEL        KIEVNCATARVHSKKVKPTGGILDQMNPLMAQSALAAQAQMNRALLLRSP
+tr|E3M2K8|E3M2K8_CAERE      NPLMAQSAMAAQAQMNRAFLLRSPLVAQSLLGRGAGLISGIQQPNAFQLQ
+tr|A8WS01|A8WS01_CAEBR      KVKPTGGILDQMNPLMAQSALAAQAQMNRALLLRSPLVAQSLLGRGAGLI
+tr|Q9VT99|Q9VT99_DROME      GGGGNTGGGGGGGGGGTPSSPLSNSPSSATASQAGGCGLTLNGSATEGSM
+TrEMBL|E1FUV2|Release       --------------------------------------------------
+TrEMBL|A8NSK3|Release       HFNKQLQQIVRYIYEIR---------------------------------
+                                                                              
+
+sp|Q10572|FOX1_CAEEL        LVAQSLLGRGAALIPGMQQPAFQLQAALAGNPLAQLQGQPLLFNAAALQT
+tr|E3M2K8|E3M2K8_CAERE      AALAANPLAQLQGQPLLFNAAALQSSALQQSAFGMDQATVQAALLANEQA
+tr|A8WS01|A8WS01_CAEBR      PGIQQPAAAFQLQAALAANPLAQLQGQPLLFNAAALQSNALQQSAFGMDQ
+tr|Q9VT99|Q9VT99_DROME      SGDTSPVASGEPLLQTPPAHQQQQQQQQPLLCSSPTSMQSSGTSVTGSSI
+TrEMBL|E1FUV2|Release       --------------------------------------------------
+TrEMBL|A8NSK3|Release       --------------------------------------------------
+                                                                              
+
+sp|Q10572|FOX1_CAEEL        NALQQSAFGMDPAAVQAALLANEQARFQLAAAAAQGRIPSSGNASAFGEQ
+tr|E3M2K8|E3M2K8_CAERE      RLQFAAAAAQGNEYLMYHQAKQQELPGRIPSAGNASAFGEQYLGNALSAA
+tr|A8WS01|A8WS01_CAEBR      AAVQAALLANEQARLLAAAAAAQGNEYLMYHQAKQQELSGRIPSSGNGTA
+tr|Q9VT99|Q9VT99_DROME      ASGTLAATSSSGVGLLPTTGLDSIANGGAPTGCAVVPASTSQVIAHLNAA
+TrEMBL|E1FUV2|Release       --------------------------------------------------
+TrEMBL|A8NSK3|Release       --------------------------------------------------
+                                                                              
+
+sp|Q10572|FOX1_CAEEL        YLSNALATASLPSYQMNPALRTLNRFTPY---------------------
+tr|E3M2K8|E3M2K8_CAERE      SLSSYQINPALRTLNRFTPY------------------------------
+tr|A8WS01|A8WS01_CAEBR      FGEQYLGNALSAGSLPSYQINPSLRTLNRFTPY-----------------
+tr|Q9VT99|Q9VT99_DROME      AAAASGIVSPSANVATSLSSALVPAQSVAAVAAASLDAKSQPKRLHVSNI
+TrEMBL|E1FUV2|Release       --------------------------------------------------
+TrEMBL|A8NSK3|Release       --------------------------------------------------
+                                                                              
+
+sp|Q10572|FOX1_CAEEL        --------------------------------------------------
+tr|E3M2K8|E3M2K8_CAERE      --------------------------------------------------
+tr|A8WS01|A8WS01_CAEBR      --------------------------------------------------
+tr|Q9VT99|Q9VT99_DROME      PFRFRDPDLRAMFGQFGTILDVEIIFNERGSKGFGFVTFANSNDAERARE
+TrEMBL|E1FUV2|Release       --------------------------------------------------
+TrEMBL|A8NSK3|Release       --------------------------------------------------
+                                                                              
+
+sp|Q10572|FOX1_CAEEL        --------------------------------------------------
+tr|E3M2K8|E3M2K8_CAERE      --------------------------------------------------
+tr|A8WS01|A8WS01_CAEBR      --------------------------------------------------
+tr|Q9VT99|Q9VT99_DROME      RLHGTVVEGRKIEVNNATARVQTKKVTAVPNVCVQWPEAAVAAAMRGVAI
+TrEMBL|E1FUV2|Release       --------------------------------------------------
+TrEMBL|A8NSK3|Release       --------------------------------------------------
+                                                                              
+
+sp|Q10572|FOX1_CAEEL        --------------------------------------------------
+tr|E3M2K8|E3M2K8_CAERE      --------------------------------------------------
+tr|A8WS01|A8WS01_CAEBR      --------------------------------------------------
+tr|Q9VT99|Q9VT99_DROME      QRGHVGVVGATPYHHPHHPHHHPALLAASAAAAQQQQQRQLAAAAVATAA
+TrEMBL|E1FUV2|Release       --------------------------------------------------
+TrEMBL|A8NSK3|Release       --------------------------------------------------
+                                                                              
+
+sp|Q10572|FOX1_CAEEL        --------------------------------------------------
+tr|E3M2K8|E3M2K8_CAERE      --------------------------------------------------
+tr|A8WS01|A8WS01_CAEBR      --------------------------------------------------
+tr|Q9VT99|Q9VT99_DROME      VAQQQQQQQQAVVQQQQQQVAAAAQQQHQQQQQQQQQAVQQQQAVQQQQQ
+TrEMBL|E1FUV2|Release       --------------------------------------------------
+TrEMBL|A8NSK3|Release       --------------------------------------------------
+                                                                              
+
+sp|Q10572|FOX1_CAEEL        --------------------------------------------------
+tr|E3M2K8|E3M2K8_CAERE      --------------------------------------------------
+tr|A8WS01|A8WS01_CAEBR      --------------------------------------------------
+tr|Q9VT99|Q9VT99_DROME      HQQQQQQQQQQQHAAVAAAAAAASHPHMHAAHAHAHAHALGPQLAQLQAV
+TrEMBL|E1FUV2|Release       --------------------------------------------------
+TrEMBL|A8NSK3|Release       --------------------------------------------------
+                                                                              
+
+sp|Q10572|FOX1_CAEEL        --------------------------------------------------
+tr|E3M2K8|E3M2K8_CAERE      --------------------------------------------------
+tr|A8WS01|A8WS01_CAEBR      --------------------------------------------------
+tr|Q9VT99|Q9VT99_DROME      AVPTAASNAAALQQSLAAAIQNPSGNPNAAAAAAAYAARLSAATGATQSP
+TrEMBL|E1FUV2|Release       --------------------------------------------------
+TrEMBL|A8NSK3|Release       --------------------------------------------------
+                                                                              
+
+sp|Q10572|FOX1_CAEEL        --------------------------------------------------
+tr|E3M2K8|E3M2K8_CAERE      --------------------------------------------------
+tr|A8WS01|A8WS01_CAEBR      --------------------------------------------------
+tr|Q9VT99|Q9VT99_DROME      QTAAAAAAAASMAASANAANNAAALHGFAPVYYDPFLAAAASADPNLRFQ
+TrEMBL|E1FUV2|Release       --------------------------------------------------
+TrEMBL|A8NSK3|Release       --------------------------------------------------
+                                                                              
+
+sp|Q10572|FOX1_CAEEL        --------------------------------------------------
+tr|E3M2K8|E3M2K8_CAERE      --------------------------------------------------
+tr|A8WS01|A8WS01_CAEBR      --------------------------------------------------
+tr|Q9VT99|Q9VT99_DROME      ATAPLLKTPLSQAQQQAYATAATTYTAVAARAAYGAAAAAAAQPALAGYA
+TrEMBL|E1FUV2|Release       --------------------------------------------------
+TrEMBL|A8NSK3|Release       --------------------------------------------------
+                                                                              
+
+sp|Q10572|FOX1_CAEEL        ---------------------------------------
+tr|E3M2K8|E3M2K8_CAERE      ---------------------------------------
+tr|A8WS01|A8WS01_CAEBR      ---------------------------------------
+tr|Q9VT99|Q9VT99_DROME      TVAGYAREYADPYLGHGIGPVPGYGATMYRGGFNRFTPY
+TrEMBL|E1FUV2|Release       ---------------------------------------
+TrEMBL|A8NSK3|Release       ---------------------------------------
+                                                                   
