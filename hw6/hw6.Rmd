@@ -1,0 +1,53 @@
+---
+title: "Homework Assignment"
+subtitle: Phylogenetic Trees
+date: "04-07-2023"
+output:
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE)
+knitr::opts_chunk$set(cache=FALSE)
+knitr::opts_chunk$set(tidy=TRUE)
+knitr::opts_chunk$set(tidy.opts=list(width.cutoff = 60))
+
+source("~/bioinformatics/functions/printMultipleAlignment.R")
+source("~/bioinformatics/functions/rootedNJtree.R")
+source("~/bioinformatics/functions/unrootedNJtree.R")
+
+setwd("~/bioinformatics/hw6/")
+
+require(seqinr)
+require(dplyr)
+require(ape)
+require(Biostrings)
+```
+
+# Task A
+```{r taskA}
+  seqs <- read.fasta(file = "usflu.fasta")
+```
+
+# Task B
+I just selected the first strain from each year.
+```{r taskB}
+  annotations <- read.csv("usflu.annot.csv")
+  strains <- annotations %>% group_by(year) %>% slice_head(n = 1)
+  print(strains)
+  filtered_seqs <- seqs[strains$accession]
+  write.fasta(sequences = filtered_seqs, names = getName(filtered_seqs), file.out = "filtered_seqs.fasta")
+```
+
+\pagebreak
+
+# Task C
+
+![Alignment](images/alignment.png)
+
+# Task D
+
+
+
+
+
