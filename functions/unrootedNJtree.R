@@ -1,4 +1,4 @@
-unrootedNJtree <- function(alignment,type)
+unrootedNJtree <- function(alignment,type,tree_type="u")
 {
   # this function requires the ape and seqinR packages:
   require("ape")
@@ -26,7 +26,7 @@ unrootedNJtree <- function(alignment,type)
   # bootstrap the tree
   myboot <- boot.phylo(mytree, mymat, makemytree)
   # plot the tree:
-  plot.phylo(mytree,type="u") # plot the unrooted phylogenetic tree
+  plot.phylo(mytree,type=tree_type) # plot the unrooted phylogenetic tree
   nodelabels(myboot,cex=0.7) # plot the bootstrap values
   mytree$node.label <- myboot # make the bootstrap values be the node labels
   return(mytree)
