@@ -89,7 +89,7 @@ Yes, this is consistent with my answer from part d.
 
 # Task H
 For the tree in part (e), most of the groups have a confidence value of more than 90%. A couple of nodes have values less than 80 (71 and 62). I would say that the groups have been formed with moderately high accuracy.\
-For the tree in part (g), the bootstrap values seem to be on the lower side, and this suggests that the groups haven't been formed with much accuracy.
+For the tree in part (g), the bootstrap values seem to be on the lower side, and this suggests that the groups haven't been formed with great accuracy.
 
 
 # Task I
